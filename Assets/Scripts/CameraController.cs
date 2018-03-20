@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-		public GameObject player;
-		private Vector3 offset;
+	private Vector3 offset;
+    public Transform target;
+    public float rotateSpeed;
 	// Use this for initialization
 	void Start () {
-		offset = transform.position - player.transform.position;
+		offset = transform.position - target.transform.position;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		transform.position = player.transform.position + offset;
+		transform.position = target.transform.position + offset;
+        transform.LookAt(target);
+
+        if (Input.GetMouseButton(0))
+        {
+            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotateSpeed, Vector3.up);
+
+            offset = camTurnAngle * offset;
+        }
 	}
 }
