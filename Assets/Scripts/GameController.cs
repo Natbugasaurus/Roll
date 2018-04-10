@@ -14,12 +14,16 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public void NextLevel () {
 		levelsList [currentLevel].gameObject.SetActive (false);
-		currentLevel += 1;
+        if (currentLevel < levelsList.Length - 1) {
+            currentLevel++;
+        } else {
+            currentLevel = 0;
+        }     	    
 		levelsList [currentLevel].gameObject.SetActive (true);
     }
 }

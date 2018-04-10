@@ -17,7 +17,6 @@ public class LevelController : MonoBehaviour {
 		rotateDirection *= rotateSpeed;
 		rotateDirection = Camera.main.transform.rotation * rotateDirection;
 
-		//transform.rotation = Quaternion.AngleAxis (transform.rotation.z, Camera.main.transform.right);
         transform.Rotate(rotateDirection);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 0.015f);
