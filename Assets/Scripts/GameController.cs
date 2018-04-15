@@ -18,12 +18,17 @@ public class GameController : MonoBehaviour {
     }
 
     public void NextLevel () {
+        //Set current level to inactive
 		levelsList [currentLevel].gameObject.SetActive (false);
+
+        //Check if final level and either move to next level or loop round to first level
         if (currentLevel < levelsList.Length - 1) {
             currentLevel++;
         } else {
             currentLevel = 0;
         }     	    
+
+        //Set next level to active
 		levelsList [currentLevel].gameObject.SetActive (true);
     }
 }

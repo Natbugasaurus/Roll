@@ -12,9 +12,15 @@ public class LevelEnd : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
+            //Reset player position
 			other.transform.position = new Vector3(0,0,0);
+            //Reset world rotation
 			level.transform.rotation = Quaternion.identity;
-			gameController.NextLevel ();
+            //Reset velocity
+            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            //Move to next level
+            gameController.NextLevel ();
 		}
 	}
 }

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
+        //For each point where the ball collides with the level move the particle system and emit some dust
 		foreach (ContactPoint contact in collision.contacts) {
 			if (!system.isPlaying) {
 				crashPart.transform.position = contact.point;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionStay(Collision collision) {
+        //Jump if ball is colliding with level and space is pressed
 		if (Input.GetKeyDown ("space")) {
 			rb.AddForce (Vector3.up * thrust);
 		}
